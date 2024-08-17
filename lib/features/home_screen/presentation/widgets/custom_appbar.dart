@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task1/core/utils/app_colors.dart';
 import 'package:task1/core/utils/sizes.dart';
 
 import '../../../../core/shared/appbackbutton.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget  {
   const CustomAppBar(
       {super.key,
       this.centerTitle = true,
@@ -28,7 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: (automaticallyImplyLeading == true && leading == null)
             ? const AppBackButton()
             : leading,
-        toolbarHeight: AppSizes.s50,
+        toolbarHeight: AppSizes.s50.h,
         backgroundColor: AppColors.scaffoldBackgroundColor,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.light,
@@ -42,7 +43,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(AppSizes.s50);
+
 }

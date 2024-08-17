@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:task1/core/shared/app_text_field.dart';
 import 'package:task1/core/svg_image/svg_image.dart';
 import 'package:task1/core/utils/app_assets.dart';
 import 'package:task1/core/utils/app_colors.dart';
 import 'package:task1/core/utils/app_extensions.dart';
 import 'package:task1/core/utils/app_strings.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
-import 'package:task1/features/home_screen/presentation/widgets/home_appbar.dart';
 import 'package:task1/features/layout/presentation/widgets/custom_appbar.dart';
 
 import '../widgets/custom_appbar.dart';
@@ -24,6 +24,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: _homeAppBar(),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: [
+              AppTextField(
+                borderSize: 10,
+                suffixIcon: IconButton(
+                  /// TODO: add functionality
+                  onPressed: () {},
+                  icon: AppSvgImage(
+                    image: IconAssets.filters,
+                  ),
+                ),
+                fillColor: AppColors.grayColor3,
+                hintText: 'Find Product',
+                hintStyle:
+                    AppTextStyles.style14.copyColorWith(AppColors.grayColor2),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -38,7 +59,6 @@ CustomAppbar _homeAppBar() {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: CircleAvatar(
-
               radius: 26.r,
               backgroundColor: Colors.orange,
               child: CircleAvatar(

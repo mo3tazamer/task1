@@ -11,5 +11,6 @@ class IconAssets {
 
   static String notification = '$_iconsPath/Notifications.svg';
   static String menu = '$_iconsPath/Icons-Menu-Burger.svg';
+  static String filters = '$_iconsPath/filters-2.svg';
 
 }
