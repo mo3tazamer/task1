@@ -12,6 +12,7 @@ import 'package:task1/features/layout/presentation/widgets/custom_appbar.dart';
 import '../provider/carousal_prrovider/carousal_provider.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/custom_appbar.dart';
+import '../widgets/exclusive_offer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -37,8 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: _homeAppBar(),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          padding: EdgeInsets.symmetric(horizontal: 6.w),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               AppTextField(
                 borderSize: 10.r,
@@ -59,14 +61,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     .map((item) => Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage(item),
+                              image: Image.asset(
+                                item,
+                                fit: BoxFit.fitHeight,
+                              ).image,
                             ),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10.r),
                           ),
                         ))
                     .toList(),
-              )
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const ExclusiveOffer(),
             ],
           ),
         ),

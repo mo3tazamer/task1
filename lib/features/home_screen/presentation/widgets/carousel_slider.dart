@@ -18,7 +18,6 @@ class CarouselWithDotsIndicator extends StatelessWidget {
     return Consumer<CarousalProvider>(
         builder: (context, carousalProvider, child) {
       return Stack(
-        alignment: AlignmentDirectional.bottomCenter,
         children: [
           CarouselSlider(
             items: images,
@@ -29,6 +28,9 @@ class CarouselWithDotsIndicator extends StatelessWidget {
               },
               autoPlay: true,
               viewportFraction: 1.0,
+              //aspectRatio: 2.9.h,
+              enlargeCenterPage: true,
+              height: 120.h,
             ),
           ),
           // Positioned(

@@ -5,6 +5,8 @@ class ImagesAssets {
   ImagesAssets._();
 
   static String banner = '$_imagesPath/banner.png';
+  static String oil1 = '$_imagesPath/Frame 163838.png';
+  static String oil2 = '$_imagesPath/Frame 163838u.png';
 }
 
 class IconAssets {
