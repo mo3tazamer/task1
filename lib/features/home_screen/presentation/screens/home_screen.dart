@@ -9,27 +9,39 @@ import 'package:task1/core/utils/app_strings.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
 import 'package:task1/features/layout/presentation/widgets/custom_appbar.dart';
 
+import '../provider/carousal_prrovider/carousal_provider.dart';
+import '../widgets/carousel_slider.dart';
 import '../widgets/custom_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List images = [
+    ImagesAssets.banner,
+    ImagesAssets.banner,
+    ImagesAssets.banner,
+    ImagesAssets.banner,
+    ImagesAssets.banner,
+    ImagesAssets.banner,
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: _homeAppBar(),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(
             children: [
               AppTextField(
-                borderSize: 10,
+                borderSize: 10.r,
                 suffixIcon: IconButton(
                   /// TODO: add functionality
                   onPressed: () {},
@@ -42,6 +54,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 hintStyle:
                     AppTextStyles.style14.copyColorWith(AppColors.grayColor2),
               ),
+              CarouselWithDotsIndicator(
+                images: images
+                    .map((item) => Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(item),
+                            ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                        ))
+                    .toList(),
+              )
             ],
           ),
         ),

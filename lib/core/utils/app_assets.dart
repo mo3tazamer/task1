@@ -4,6 +4,7 @@ const String _imagesPath = 'assets/images';
 class ImagesAssets {
   ImagesAssets._();
 
+  static String banner = '$_imagesPath/banner.png';
 }
 
 class IconAssets {

@@ -61,7 +61,7 @@ class AppTextField extends StatelessWidget {
       keyboardType: TextInputType.name,
       controller: controller,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.only(left: 20),
+        contentPadding: EdgeInsets.only(left: 20.w),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderSize!),
             borderSide: BorderSide.none),
