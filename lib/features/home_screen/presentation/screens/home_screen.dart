@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task1/core/shared/app_text_field.dart';
+import 'package:task1/core/shared/icon_botton.dart';
 import 'package:task1/core/svg_image/svg_image.dart';
 import 'package:task1/core/utils/app_assets.dart';
 import 'package:task1/core/utils/app_colors.dart';
 import 'package:task1/core/utils/app_extensions.dart';
 import 'package:task1/core/utils/app_strings.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
-import 'package:task1/features/layout/presentation/widgets/custom_appbar.dart';
 
-import '../provider/carousal_prrovider/carousal_provider.dart';
+import '../widgets/best_selling.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/custom_appbar.dart';
 import '../widgets/exclusive_offer.dart';
@@ -37,46 +37,49 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: _homeAppBar(),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 6.w),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppTextField(
-                borderSize: 10.r,
-                suffixIcon: IconButton(
-                  /// TODO: add functionality
-                  onPressed: () {},
-                  icon: AppSvgImage(
-                    image: IconAssets.filters,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 6.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AppTextField(
+                  borderSize: 10.r,
+                  suffixIcon: IconButton(
+                    /// TODO: add functionality
+                    onPressed: () {},
+                    icon: AppSvgImage(
+                      image: IconAssets.filters,
+                    ),
                   ),
+                  fillColor: AppColors.grayColor3,
+                  hintText: 'Find Product',
+                  hintStyle:
+                      AppTextStyles.style14.copyColorWith(AppColors.grayColor2),
                 ),
-                fillColor: AppColors.grayColor3,
-                hintText: 'Find Product',
-                hintStyle:
-                    AppTextStyles.style14.copyColorWith(AppColors.grayColor2),
-              ),
-              CarouselWithDotsIndicator(
-                images: images
-                    .map((item) => Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: Image.asset(
-                                item,
-                                fit: BoxFit.fitHeight,
-                              ).image,
+                CarouselWithDotsIndicator(
+                  images: images
+                      .map((item) => Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: Image.asset(
+                                  item,
+                                  fit: BoxFit.fitHeight,
+                                ).image,
+                              ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10.r),
                             ),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10.r),
-                          ),
-                        ))
-                    .toList(),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const ExclusiveOffer(),
-            ],
+                          ))
+                      .toList(),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const ExclusiveOffer(),
+                const BestSelling(),
+              ],
+            ),
           ),
         ),
       ),
@@ -131,13 +134,19 @@ CustomAppbar _homeAppBar() {
     ),
     automaticallyImplyLeading: false,
     actions: [
-      AppSvgImage(
-        image: IconAssets.notification,
-        height: 45.h,
-        width: 45.w,
+      AppIconBotton(
+        icon: AppSvgImage(
+          image: IconAssets.notification,
+          height: 45.h,
+          width: 45.w,
+        ),
+        onPressed: () {},
       ),
       SizedBox(width: 10.w),
-      AppSvgImage(image: IconAssets.menu, height: 45.h, width: 45.w),
+      AppIconBotton(
+        icon: AppSvgImage(image: IconAssets.menu, height: 45.h, width: 45.w),
+        onPressed: () {},
+      ),
     ],
   );
 }

@@ -8,8 +8,8 @@ import 'package:task1/core/utils/app_textstyles.dart';
 import '../../../../core/shared/icon_botton.dart';
 import '../../domain/entites/oil_model.dart';
 
-class ExclusiveOffer extends StatelessWidget {
-  const ExclusiveOffer({super.key});
+class BestSelling extends StatelessWidget {
+  const BestSelling({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,13 @@ class ExclusiveOffer extends StatelessWidget {
           Row(
             children: [
               Text(
-                'Exclusive Offers',
+                'Best Selling',
                 style: AppTextStyles.styleSemibold20,
               ),
               const Spacer(),
-              InkWell(
-                /// TODO: navigate to see all
-                onTap: () {},
-                child: Text(
-                  'see all',
-                  style: AppTextStyles.style16,
-                ),
+              Text(
+                'see all',
+                style: AppTextStyles.style16,
               ),
             ],
           ),
@@ -56,28 +52,28 @@ class ExclusiveOffer extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: Image.asset(carOilList[index].image).image,
+                            image: Image.asset(carOilList2[index].image).image,
                             fit: BoxFit.contain),
                       ),
                       child: Image.asset(
-                        carOilList[index].image,
+                        carOilList2[index].image,
                         fit: BoxFit.fitHeight,
                       ),
                     ),
                     Text(
-                      carOilList[index].type,
+                      carOilList2[index].type,
                       style: AppTextStyles.style8,
                     ),
                     Row(
                       children: [
                         Text(
-                          carOilList[index].brand,
+                          carOilList2[index].brand,
                         ),
                         const Text('-'),
-                        Text(carOilList[index].volume.toString()),
+                        Text(carOilList2[index].volume.toString()),
                       ],
                     ),
-                    Text(carOilList[index].viscosity),
+                    Text(carOilList2[index].viscosity),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -92,7 +88,7 @@ class ExclusiveOffer extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              '${carOilList[index].price.toString()} SR',
+                              '${carOilList2[index].price.toString()} SR',
                               style: AppTextStyles.style15Medium,
                             ),
                             Row(
@@ -101,14 +97,14 @@ class ExclusiveOffer extends StatelessWidget {
                                     padding: EdgeInsets.all(1.r),
                                     color: AppColors.yellowLightColor,
                                     child: Text(
-                                      carOilList[index].discount.toString(),
+                                      carOilList2[index].discount.toString(),
                                       style: AppTextStyles.style9,
                                     )),
                                 SizedBox(
                                   width: 5.w,
                                 ),
                                 Text(
-                                  '${carOilList[index].oldPrice.toString()} SR',
+                                  '${carOilList2[index].oldPrice.toString()} SR',
                                   style: AppTextStyles.style10MediumLineThrough,
                                 ),
                               ],
@@ -120,7 +116,7 @@ class ExclusiveOffer extends StatelessWidget {
                   ],
                 ),
               ),
-              itemCount: carOilList.length,
+              itemCount: carOilList2.length,
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
             ),

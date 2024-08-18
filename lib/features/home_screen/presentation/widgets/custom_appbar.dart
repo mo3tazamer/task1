@@ -6,8 +6,8 @@ import 'package:task1/core/utils/sizes.dart';
 
 import '../../../../core/shared/appbackbutton.dart';
 
-class CustomAppBar extends StatelessWidget  {
-  const CustomAppBar(
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppbar(
       {super.key,
       this.centerTitle = true,
       this.title,
@@ -23,25 +23,27 @@ class CustomAppBar extends StatelessWidget  {
 
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize:  const Size.fromHeight(AppSizes.s50),
-      child: AppBar(
-        leading: (automaticallyImplyLeading == true && leading == null)
-            ? const AppBackButton()
-            : leading,
-        toolbarHeight: AppSizes.s50.h,
-        backgroundColor: AppColors.scaffoldBackgroundColor,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.light,
-          statusBarColor: Colors.transparent,
-        ),
-        centerTitle: centerTitle,
-        actions: actions,
-        title: title,
-        automaticallyImplyLeading: automaticallyImplyLeading,
+    return AppBar(
+      forceMaterialTransparency: true,
+      leadingWidth: double.infinity,
+      toolbarHeight: AppSizes.s100.h,
+      leading: (automaticallyImplyLeading == true && leading == null)
+          ? const AppBackButton()
+          : leading,
+      //toolbarHeight: AppSizes.s80,
+      backgroundColor: AppColors.scaffoldBackgroundColor,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        statusBarColor: Colors.transparent,
       ),
+      centerTitle: centerTitle,
+      actions: actions,
+      title: title,
+      automaticallyImplyLeading: automaticallyImplyLeading,
     );
   }
 
-
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(double.infinity, AppSizes.s90.h);
 }

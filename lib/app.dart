@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:task1/features/home_screen/presentation/screens/home_screen.dart';
 
 import 'config/routes/app_generator.dart';
 import 'config/theme/theme.dart';
@@ -18,7 +17,6 @@ class _TaskState extends State<Task> {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: (context, child) => MaterialApp(
-        home: const HomeScreen(),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppGenerator.getRoute,
           theme: AppTheme.themeData,

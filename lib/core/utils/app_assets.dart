@@ -15,5 +15,10 @@ class IconAssets {
   static String notification = '$_iconsPath/Notifications.svg';
   static String menu = '$_iconsPath/Icons-Menu-Burger.svg';
   static String filters = '$_iconsPath/filters-2.svg';
-
+  static String cartIcon = '$_iconsPath/outline.svg';
+  static String cart = '$_iconsPath/cart.svg';
+  static String home = '$_iconsPath/frame61.svg';
+  static String proFile = '$_iconsPath/group4.svg';
+  static String message = '$_iconsPath/group5.svg';
+  static String settings = '$_iconsPath/tilesView.svg';
 }
