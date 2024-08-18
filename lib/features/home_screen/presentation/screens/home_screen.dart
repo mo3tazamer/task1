@@ -9,6 +9,7 @@ import 'package:task1/core/utils/app_extensions.dart';
 import 'package:task1/core/utils/app_strings.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
 
+import '../../../../core/shared/app_search_bar.dart';
 import '../widgets/best_selling.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/custom_appbar.dart';
@@ -43,20 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppTextField(
-                  borderSize: 10.r,
-                  suffixIcon: IconButton(
-                    /// TODO: add functionality
-                    onPressed: () {},
-                    icon: AppSvgImage(
-                      image: IconAssets.filters,
-                    ),
-                  ),
-                  fillColor: AppColors.grayColor3,
-                  hintText: 'Find Product',
-                  hintStyle:
-                      AppTextStyles.style14.copyColorWith(AppColors.grayColor2),
-                ),
+                const AppSearchBar(),
                 CarouselWithDotsIndicator(
                   images: images
                       .map((item) => Container(

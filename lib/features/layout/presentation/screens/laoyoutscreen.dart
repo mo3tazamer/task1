@@ -52,11 +52,12 @@ class _LayOutScreenState extends State<LayOutScreen> {
   Widget build(BuildContext context) {
     return PersistentTabView(
       /// handleAndroidBackButtonPress: true,
-      controller: PersistentTabController(initialIndex: 0),
+      controller: PersistentTabController(
+        initialIndex: 0,
+      ),
       screens: screens,
       items: items,
       context,
-
       navBarStyle: NavBarStyle.style12,
       backgroundColor: AppColors.scaffoldBackgroundColor,
 

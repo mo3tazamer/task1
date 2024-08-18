@@ -3,7 +3,5 @@ class AppStrings {
    static const String hala = "Hala,";
    static const String logInSignUp = "Log in/sign up";
    static const String riyadhSaudiArabia = "riyadh, saudi arabia";
-
-
-
+  static const String exclusiveOffer = "Exclusive Offer";
 }

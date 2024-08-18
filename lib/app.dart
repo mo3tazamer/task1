@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'config/routes/app_generator.dart';
 import 'config/theme/theme.dart';
+import 'features/home_screen/presentation/screens/exclusive_offer_details.dart';
 
 class Task extends StatefulWidget {
   const Task({super.key});

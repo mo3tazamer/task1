@@ -12,6 +12,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       this.centerTitle = true,
       this.title,
       this.leading,
+      this.leadingWidth = double.infinity,
       this.actions,
       this.automaticallyImplyLeading = true});
 
@@ -20,12 +21,13 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final List<Widget>? actions;
   final bool automaticallyImplyLeading;
+  final double leadingWidth;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       forceMaterialTransparency: true,
-      leadingWidth: double.infinity,
+      leadingWidth: leadingWidth,
       toolbarHeight: AppSizes.s100.h,
       leading: (automaticallyImplyLeading == true && leading == null)
           ? const AppBackButton()
@@ -44,6 +46,5 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => Size(double.infinity, AppSizes.s90.h);
+  Size get preferredSize => Size(double.infinity, AppSizes.s80.h);
 }

@@ -5,6 +5,8 @@ import 'package:task1/core/utils/app_assets.dart';
 import 'package:task1/core/utils/app_colors.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
 
+import '../../../../config/routes/app_navigator.dart';
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/shared/icon_botton.dart';
 import '../../domain/entites/oil_model.dart';
 
@@ -26,7 +28,10 @@ class ExclusiveOffer extends StatelessWidget {
               const Spacer(),
               InkWell(
                 /// TODO: navigate to see all
-                onTap: () {},
+                onTap: () {
+                  AppNavigator.navigateNamedTo(
+                      context, AppRoutes.exclusiveOffer);
+                },
                 child: Text(
                   'see all',
                   style: AppTextStyles.style16,
