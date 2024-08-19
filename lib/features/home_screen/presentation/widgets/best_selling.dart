@@ -35,15 +35,13 @@ class BestSelling extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 200.h,
-            width: double.infinity,
+          Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(
                 width: 8,
               ),
               itemBuilder: (context, index) => Container(
-                width: 150.w,
+                width: 140.w,
                 padding: EdgeInsets.all(8.r),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -52,17 +50,12 @@ class BestSelling extends StatelessWidget {
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: Image.asset(carOilList2[index].image).image,
-                            fit: BoxFit.contain),
-                      ),
+                    Center(
                       child: Image.asset(
+                        height: 100.h,
                         carOilList2[index].image,
-                        fit: BoxFit.fitHeight,
+                        fit: BoxFit.fitWidth,
                       ),
                     ),
                     Text(

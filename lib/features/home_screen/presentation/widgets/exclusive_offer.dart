@@ -55,7 +55,7 @@ class _ExclusiveOfferState extends State<ExclusiveOffer> {
                 width: 8,
               ),
               itemBuilder: (context, index) => Container(
-                width: 150.w,
+                width: 140.w,
                 padding: EdgeInsets.all(8.r),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -66,15 +66,11 @@ class _ExclusiveOfferState extends State<ExclusiveOffer> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: Image.asset(carOilList[index].image).image,
-                            fit: BoxFit.contain),
-                      ),
+                    Center(
                       child: Image.asset(
+                        height: 100.h,
                         carOilList[index].image,
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     Text(
@@ -106,11 +102,11 @@ class _ExclusiveOfferState extends State<ExclusiveOffer> {
                           },
                           icon: AppSvgImage(
                             image: IconAssets.cartIcon,
-                            width: 25.w,
+                            width: 30.w,
                             color: carOilList[index].isCart == true
                                 ? AppColors.activeColorBar
                                 : AppColors.grayColor,
-                            height: 25.h,
+                            height: 30.h,
                           ),
                         ),
                         Column(
