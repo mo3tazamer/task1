@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:task1/core/shared/app_text_field.dart';
 import 'package:task1/core/shared/icon_botton.dart';
 import 'package:task1/core/svg_image/svg_image.dart';
@@ -10,6 +11,7 @@ import 'package:task1/core/utils/app_strings.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
 
 import '../../../../core/shared/app_search_bar.dart';
+import '../provider/cart_provider/cart_provider.dart';
 import '../widgets/best_selling.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/custom_appbar.dart';
@@ -25,6 +27,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (FocusScope.of(context).hasFocus) {
+        FocusScope.of(context).unfocus();
+      }
+    });
+
+    super.initState();
+  }
+
   final List images = [
     ImagesAssets.banner,
     ImagesAssets.banner,
@@ -37,14 +59,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: _homeAppBar(),
+        appBar: _homeAppBar(context),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 6.w),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const AppSearchBar(),
+                AppSearchBar(
+                  focusNode: _focusNode,
+                ),
                 CarouselWithDotsIndicator(
                   images: images
                       .map((item) => Container(
@@ -75,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-CustomAppbar _homeAppBar() {
+CustomAppbar _homeAppBar(context) {
   return CustomAppbar(
     leading: IntrinsicHeight(
       child: Row(

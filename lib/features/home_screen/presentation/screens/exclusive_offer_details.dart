@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:task1/features/home_screen/presentation/widgets/custom_appbar.dart';
 
 import '../../../../core/shared/app_search_bar.dart';
@@ -11,6 +12,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_textstyles.dart';
 import '../../domain/entites/oil_model.dart';
+import '../provider/cart_provider/cart_provider.dart';
 
 class ExclusiveOfferDetails extends StatefulWidget {
   const ExclusiveOfferDetails({super.key});
@@ -32,7 +34,7 @@ class _ExclusiveOfferDetailsState extends State<ExclusiveOfferDetails> {
             SizedBox(
               height: 5.h,
             ),
-            _gridViewItems()
+            _gridViewItems(context)
           ],
         ),
       ),
@@ -52,7 +54,10 @@ CustomAppbar _customAppbar() {
   );
 }
 
-Widget _gridViewItems() {
+Widget _gridViewItems(context) {
+  var provider = Provider.of<Cart>(
+    context,
+  );
   return Expanded(
     child: GridView.builder(
       itemBuilder: (context, index) => Container(
@@ -97,11 +102,22 @@ Widget _gridViewItems() {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppIconBotton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (carOilList[index].isCart == false) {
+                      provider.addCart(carOilList[index]);
+                      carOilList[index].isCart = true;
+                    } else {
+                      provider.removeCart(carOilList[index]);
+                      carOilList[index].isCart = false;
+                    }
+                  },
                   icon: AppSvgImage(
                     image: IconAssets.cartIcon,
-                    width: 30.w,
-                    height: 30.h,
+                    width: 25.w,
+                    color: carOilList[index].isCart == true
+                        ? AppColors.activeColorBar
+                        : AppColors.grayColor,
+                    height: 25.h,
                   ),
                 ),
                 Column(

@@ -9,11 +9,16 @@ import '../utils/app_textstyles.dart';
 import 'app_text_field.dart';
 
 class AppSearchBar extends StatelessWidget {
-  const AppSearchBar({super.key});
+  const AppSearchBar({super.key, this.controller, this.focusNode});
+
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
     return AppTextField(
+      controller: controller,
+      focusNode: focusNode,
       borderSize: 10.r,
       suffixIcon: IconButton(
         /// TODO: add functionality

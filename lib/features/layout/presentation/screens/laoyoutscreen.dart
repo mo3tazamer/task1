@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../config/routes/app_generator.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
 
+import '../../../home_screen/presentation/provider/cart_provider/cart_provider.dart';
 import '../../../home_screen/presentation/screens/home_screen.dart';
 import '../widgets/nav_bar_item.dart';
 
@@ -25,38 +27,62 @@ class _LayOutScreenState extends State<LayOutScreen> {
     Container(),
   ];
 
-  List<PersistentBottomNavBarItem> items = [
-    navBarItem(
-        icon: IconAssets.home,
-        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-            onGenerateRoute: AppGenerator.getRoute)),
-    navBarItem(
-        icon: IconAssets.settings,
-        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-            onGenerateRoute: AppGenerator.getRoute)),
-    navBarItem(
-        icon: IconAssets.cart,
-        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-            onGenerateRoute: AppGenerator.getRoute)),
-    navBarItem(
-        icon: IconAssets.message,
-        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-            onGenerateRoute: AppGenerator.getRoute)),
-    navBarItem(
-        icon: IconAssets.proFile,
-        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-            onGenerateRoute: AppGenerator.getRoute)),
-  ];
+  // List<PersistentBottomNavBarItem> items = [
+  //   navBarItem(
+  //       icon: IconAssets.home,
+  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+  //           onGenerateRoute: AppGenerator.getRoute)),
+  //   navBarItem(
+  //       icon: IconAssets.settings,
+  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+  //           onGenerateRoute: AppGenerator.getRoute)),
+  //   navBarItemWithBadge(
+  //       icon: IconAssets.cart,
+  //       badgeCount:provider.cartCount,
+  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+  //           onGenerateRoute: AppGenerator.getRoute)),
+  //   navBarItem(
+  //       icon: IconAssets.message,
+  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+  //           onGenerateRoute: AppGenerator.getRoute)),
+  //   navBarItem(
+  //       icon: IconAssets.proFile,
+  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+  //           onGenerateRoute: AppGenerator.getRoute)),
+  // ];
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Cart>(context, listen: true);
     return PersistentTabView(
       /// handleAndroidBackButtonPress: true,
       controller: PersistentTabController(
         initialIndex: 0,
       ),
       screens: screens,
-      items: items,
+      items: [
+        navBarItem(
+            icon: IconAssets.home,
+            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+                onGenerateRoute: AppGenerator.getRoute)),
+        navBarItem(
+            icon: IconAssets.settings,
+            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+                onGenerateRoute: AppGenerator.getRoute)),
+        navBarItemWithBadge(
+            icon: IconAssets.cart,
+            badgeCount: provider.cartCount,
+            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+                onGenerateRoute: AppGenerator.getRoute)),
+        navBarItem(
+            icon: IconAssets.message,
+            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+                onGenerateRoute: AppGenerator.getRoute)),
+        navBarItem(
+            icon: IconAssets.proFile,
+            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+                onGenerateRoute: AppGenerator.getRoute)),
+      ],
       context,
       navBarStyle: NavBarStyle.style12,
       backgroundColor: AppColors.scaffoldBackgroundColor,

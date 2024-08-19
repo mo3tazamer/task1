@@ -52,6 +52,8 @@ class AppTextField extends StatelessWidget {
       onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted,
       readOnly: readOnly,
+      autofocus: false,
+      enabled: true,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       keyboardAppearance: Brightness.dark,
       obscureText: obscureText!,

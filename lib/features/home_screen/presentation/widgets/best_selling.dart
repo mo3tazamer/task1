@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:task1/core/svg_image/svg_image.dart';
 import 'package:task1/core/utils/app_assets.dart';
 import 'package:task1/core/utils/app_colors.dart';
@@ -7,12 +8,16 @@ import 'package:task1/core/utils/app_textstyles.dart';
 
 import '../../../../core/shared/icon_botton.dart';
 import '../../domain/entites/oil_model.dart';
+import '../provider/cart_provider/cart_provider.dart';
 
 class BestSelling extends StatelessWidget {
   const BestSelling({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Cart>(
+      context,
+    );
     return SizedBox(
       height: 240.h,
       child: Column(
@@ -78,9 +83,20 @@ class BestSelling extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppIconBotton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (carOilList2[index].isCart == false) {
+                              provider.addCart(carOilList2[index]);
+                              carOilList2[index].isCart = true;
+                            } else {
+                              provider.removeCart(carOilList2[index]);
+                              carOilList2[index].isCart = false;
+                            }
+                          },
                           icon: AppSvgImage(
                             image: IconAssets.cartIcon,
+                            color: carOilList2[index].isCart == true
+                                ? AppColors.activeColorBar
+                                : AppColors.grayColor,
                             width: 30.w,
                             height: 30.h,
                           ),

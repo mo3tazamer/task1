@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:task1/core/svg_image/svg_image.dart';
 import 'package:task1/core/utils/app_assets.dart';
 import 'package:task1/core/utils/app_colors.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
+import 'package:task1/features/home_screen/presentation/provider/cart_provider/cart_provider.dart';
 
 import '../../../../config/routes/app_navigator.dart';
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/shared/icon_botton.dart';
 import '../../domain/entites/oil_model.dart';
 
-class ExclusiveOffer extends StatelessWidget {
+class ExclusiveOffer extends StatefulWidget {
   const ExclusiveOffer({super.key});
 
   @override
+  State<ExclusiveOffer> createState() => _ExclusiveOfferState();
+}
+
+class _ExclusiveOfferState extends State<ExclusiveOffer> {
+  @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Cart>(
+      context,
+    );
     return SizedBox(
       height: 240.h,
       child: Column(
@@ -39,9 +49,7 @@ class ExclusiveOffer extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 200.h,
-            width: double.infinity,
+          Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(
                 width: 8,
@@ -66,7 +74,7 @@ class ExclusiveOffer extends StatelessWidget {
                       ),
                       child: Image.asset(
                         carOilList[index].image,
-                        fit: BoxFit.fitHeight,
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Text(
@@ -87,11 +95,22 @@ class ExclusiveOffer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppIconBotton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (carOilList[index].isCart == false) {
+                              provider.addCart(carOilList[index]);
+                              carOilList[index].isCart = true;
+                            } else {
+                              provider.removeCart(carOilList[index]);
+                              carOilList[index].isCart = false;
+                            }
+                          },
                           icon: AppSvgImage(
                             image: IconAssets.cartIcon,
-                            width: 30.w,
-                            height: 30.h,
+                            width: 25.w,
+                            color: carOilList[index].isCart == true
+                                ? AppColors.activeColorBar
+                                : AppColors.grayColor,
+                            height: 25.h,
                           ),
                         ),
                         Column(

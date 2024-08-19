@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import '../../../../core/shared/badge.dart';
 import '../../../../core/svg_image/svg_image.dart';
 import '../../../../core/utils/app_colors.dart';
 
@@ -25,6 +26,30 @@ PersistentBottomNavBarItem navBarItem({
       image: icon,
       color: AppColors.activeColorBar,
       fit: BoxFit.contain,
+    ),
+    routeAndNavigatorSettings: routeAndNavigatorSettings,
+    activeColorPrimary: AppColors.activeColorBar,
+    inactiveColorPrimary: AppColors.grayColor,
+  );
+}
+
+PersistentBottomNavBarItem navBarItemWithBadge({
+  required String icon,
+  int badgeCount = 0,
+  RouteAndNavigatorSettings routeAndNavigatorSettings =
+      const RouteAndNavigatorSettings(),
+}) {
+  return PersistentBottomNavBarItem(
+    // Inactive icon
+    inactiveIcon: BadgeIcon(
+      icon: icon,
+      badgeCount: badgeCount,
+    ),
+
+    // Active icon with gradient color
+    icon: BadgeIcon(
+      icon: icon,
+      badgeCount: badgeCount,
     ),
     routeAndNavigatorSettings: routeAndNavigatorSettings,
     activeColorPrimary: AppColors.activeColorBar,

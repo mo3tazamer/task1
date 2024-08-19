@@ -1,17 +1,18 @@
+import 'package:equatable/equatable.dart';
+
 import '../../../../core/utils/app_assets.dart';
 
-class CarOil {
+class CarOil extends Equatable {
   final String brand;
   final String type;
   final String viscosity;
-  final int volume; // in liters
-  final double price; // in USD
+  final int volume;
+  final double price;
   final double oldPrice;
   final String discount;
+  late bool? isCart;
 
-  // in USD
-
-  final String image; // from 0 to 5
+  final String image;
 
   CarOil({
     required this.brand,
@@ -22,47 +23,66 @@ class CarOil {
     required this.oldPrice,
     required this.discount,
     required this.image,
+    this.isCart,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        brand,
+        type,
+        viscosity,
+        volume,
+        price,
+        oldPrice,
+        discount,
+        image,
+        isCart
+      ];
 }
 
 // Fake data
 List<CarOil> carOilList = [
   CarOil(
       image: ImagesAssets.oil2,
-      brand: 'Mobile',
-      type: 'motor oil',
+      brand: 'Mobile s',
+      type: 'motor oil s',
       viscosity: '5W-30',
-      volume: 5000,
-      price: 240,
-      oldPrice: 250,
-      discount: '-4%'),
+      volume: 5055,
+      price: 300,
+      oldPrice: 350,
+      discount: '-5%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil1,
-      brand: 'mobile',
-      type: 'motor oil',
-      viscosity: '10W-40',
-      volume: 5000,
-      price: 240,
-      oldPrice: 250,
-      discount: '-4%'),
+      brand: 'mobile scs',
+      type: 'motor oilcsc',
+      viscosity: '10W-40 scs',
+      volume: 5005,
+      price: 200,
+      oldPrice: 300,
+      discount: '-8%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil1,
-      brand: 'mobile',
-      type: 'motor oil',
-      viscosity: '10W-30',
-      volume: 5000,
-      price: 240,
-      oldPrice: 250,
-      discount: '-4%'),
+      brand: 'mobileqq',
+      type: 'motor oil qw',
+      viscosity: '10W-30ee',
+      volume: 5350,
+      price: 100,
+      oldPrice: 150,
+      discount: '-2%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil1,
-      brand: 'mobile',
-      type: 'motor oil',
-      viscosity: '0W-20',
-      volume: 5000,
-      price: 240,
+      brand: 'mobile34',
+      type: 'motor oil11',
+      viscosity: '0W-2022',
+      volume: 50001,
+      price: 2400,
       oldPrice: 250,
-      discount: '-4%'),
+      discount: '-1%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil1,
       brand: 'mobile',
@@ -71,7 +91,8 @@ List<CarOil> carOilList = [
       volume: 5000,
       price: 240,
       oldPrice: 250,
-      discount: '-4%'),
+      discount: '-4%',
+      isCart: false),
 ];
 List<CarOil> carOilList2 = [
   CarOil(
@@ -82,7 +103,8 @@ List<CarOil> carOilList2 = [
       volume: 5000,
       price: 240,
       oldPrice: 250,
-      discount: '-4%'),
+      discount: '-4%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil2,
       brand: 'mobile',
@@ -91,7 +113,8 @@ List<CarOil> carOilList2 = [
       volume: 5000,
       price: 240,
       oldPrice: 250,
-      discount: '-4%'),
+      discount: '-4%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil2,
       brand: 'mobile',
@@ -100,7 +123,8 @@ List<CarOil> carOilList2 = [
       volume: 5000,
       price: 240,
       oldPrice: 250,
-      discount: '-4%'),
+      discount: '-4%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil2,
       brand: 'mobile',
@@ -109,7 +133,8 @@ List<CarOil> carOilList2 = [
       volume: 5000,
       price: 240,
       oldPrice: 250,
-      discount: '-4%'),
+      discount: '-4%',
+      isCart: false),
   CarOil(
       image: ImagesAssets.oil2,
       brand: 'mobile',
@@ -118,5 +143,6 @@ List<CarOil> carOilList2 = [
       volume: 5000,
       price: 240,
       oldPrice: 250,
-      discount: '-4%'),
+      discount: '-4%',
+      isCart: false),
 ];
