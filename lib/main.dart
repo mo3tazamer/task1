@@ -11,6 +11,8 @@ void main() {
       create: (context) => CarousalProvider(),
     ),
     ChangeNotifierProvider(
+
+
       create: (context) => Cart(),
     ),
   ], child: const Task()));

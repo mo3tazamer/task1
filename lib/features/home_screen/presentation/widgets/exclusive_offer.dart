@@ -26,7 +26,7 @@ class _ExclusiveOfferState extends State<ExclusiveOffer> {
       context,
     );
     return SizedBox(
-      height: 240.h,
+      height: 260.h,
       child: Column(
         children: [
           Row(
@@ -51,8 +51,8 @@ class _ExclusiveOfferState extends State<ExclusiveOffer> {
           ),
           Expanded(
             child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(
-                width: 8,
+              separatorBuilder: (context, index) => SizedBox(
+                width: 8.w,
               ),
               itemBuilder: (context, index) => Container(
                 width: 140.w,
@@ -60,7 +60,7 @@ class _ExclusiveOfferState extends State<ExclusiveOffer> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
-                  border: Border.all(color: AppColors.grayColor4, width: 1),
+                  border: Border.all(color: AppColors.grayColor4, width: 1.w),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:task1/core/shared/app_text_field.dart';
+
 import 'package:task1/core/shared/icon_botton.dart';
 import 'package:task1/core/svg_image/svg_image.dart';
 import 'package:task1/core/utils/app_assets.dart';
@@ -11,7 +10,7 @@ import 'package:task1/core/utils/app_strings.dart';
 import 'package:task1/core/utils/app_textstyles.dart';
 
 import '../../../../core/shared/app_search_bar.dart';
-import '../provider/cart_provider/cart_provider.dart';
+
 import '../widgets/best_selling.dart';
 import '../widgets/carousel_slider.dart';
 import '../widgets/custom_appbar.dart';
@@ -55,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ImagesAssets.banner,
     ImagesAssets.banner,
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -69,27 +69,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 AppSearchBar(
                   focusNode: _focusNode,
                 ),
-                CarouselWithDotsIndicator(
-                  images: images
-                      .map((item) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: Image.asset(
-                                  item,
-                                  fit: BoxFit.fitHeight,
-                                ).image,
+                Flexible(
+                  child: CarouselWithDotsIndicator(
+                    images: images
+                        .map((item) => Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: Image.asset(
+                                    item,
+                                    fit: BoxFit.fitHeight,
+                                  ).image,
+                                ),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10.r),
                               ),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10.r),
-                            ),
-                          ))
-                      .toList(),
+                            ))
+                        .toList(),
+                  ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
-                const ExclusiveOffer(),
-                const BestSelling(),
+                const Expanded(child: ExclusiveOffer()),
+                const Expanded(child: BestSelling()),
               ],
             ),
           ),
