@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'config/routes/app_generator.dart';
 import 'config/theme/theme.dart';
-import 'features/home_screen/presentation/screens/exclusive_offer_details.dart';
 
 class Task extends StatefulWidget {
   const Task({super.key});
@@ -16,6 +15,7 @@ class _TaskState extends State<Task> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      minTextAdapt: true,
       designSize: const Size(360, 690),
       builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,

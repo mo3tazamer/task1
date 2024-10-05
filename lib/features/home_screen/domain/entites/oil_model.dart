@@ -10,7 +10,7 @@ class CarOil extends Equatable {
   final double price;
   final double oldPrice;
   final String discount;
-  late bool? isCart;
+  late bool isCart;
 
   final String image;
 
@@ -23,7 +23,7 @@ class CarOil extends Equatable {
     required this.oldPrice,
     required this.discount,
     required this.image,
-    this.isCart,
+    required this.isCart,
   });
 
   @override

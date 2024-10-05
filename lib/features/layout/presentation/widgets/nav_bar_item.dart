@@ -40,13 +40,10 @@ PersistentBottomNavBarItem navBarItemWithBadge({
       const RouteAndNavigatorSettings(),
 }) {
   return PersistentBottomNavBarItem(
-    // Inactive icon
     inactiveIcon: BadgeIcon(
       icon: icon,
       badgeCount: badgeCount,
     ),
-
-    // Active icon with gradient color
     icon: BadgeIcon(
       icon: icon,
       badgeCount: badgeCount,

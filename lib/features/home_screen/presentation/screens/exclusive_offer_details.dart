@@ -27,7 +27,7 @@ class _ExclusiveOfferDetailsState extends State<ExclusiveOfferDetails> {
     return Scaffold(
       appBar: _customAppbar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: EdgeInsets.symmetric(horizontal: 8.0.w),
         child: Column(
           children: [
             const AppSearchBar(),

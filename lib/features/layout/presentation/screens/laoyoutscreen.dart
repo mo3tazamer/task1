@@ -27,29 +27,41 @@ class _LayOutScreenState extends State<LayOutScreen> {
     Container(),
   ];
 
-  // List<PersistentBottomNavBarItem> items = [
-  //   navBarItem(
-  //       icon: IconAssets.home,
-  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-  //           onGenerateRoute: AppGenerator.getRoute)),
-  //   navBarItem(
-  //       icon: IconAssets.settings,
-  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-  //           onGenerateRoute: AppGenerator.getRoute)),
-  //   navBarItemWithBadge(
-  //       icon: IconAssets.cart,
-  //       badgeCount:provider.cartCount,
-  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-  //           onGenerateRoute: AppGenerator.getRoute)),
-  //   navBarItem(
-  //       icon: IconAssets.message,
-  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-  //           onGenerateRoute: AppGenerator.getRoute)),
-  //   navBarItem(
-  //       icon: IconAssets.proFile,
-  //       routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-  //           onGenerateRoute: AppGenerator.getRoute)),
-  // ];
+  List<PersistentBottomNavBarItem> _buildNavBarItems(Cart cartProvider) {
+    return [
+      navBarItem(
+        icon: IconAssets.home,
+        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+          onGenerateRoute: AppGenerator.getRoute,
+        ),
+      ),
+      navBarItem(
+        icon: IconAssets.settings,
+        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+          onGenerateRoute: AppGenerator.getRoute,
+        ),
+      ),
+      navBarItemWithBadge(
+        icon: IconAssets.cart,
+        badgeCount: cartProvider.cartCount,
+        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+          onGenerateRoute: AppGenerator.getRoute,
+        ),
+      ),
+      navBarItem(
+        icon: IconAssets.message,
+        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+          onGenerateRoute: AppGenerator.getRoute,
+        ),
+      ),
+      navBarItem(
+        icon: IconAssets.proFile,
+        routeAndNavigatorSettings: const RouteAndNavigatorSettings(
+          onGenerateRoute: AppGenerator.getRoute,
+        ),
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,29 +72,7 @@ class _LayOutScreenState extends State<LayOutScreen> {
         initialIndex: 0,
       ),
       screens: screens,
-      items: [
-        navBarItem(
-            icon: IconAssets.home,
-            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-                onGenerateRoute: AppGenerator.getRoute)),
-        navBarItem(
-            icon: IconAssets.settings,
-            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-                onGenerateRoute: AppGenerator.getRoute)),
-        navBarItemWithBadge(
-            icon: IconAssets.cart,
-            badgeCount: provider.cartCount,
-            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-                onGenerateRoute: AppGenerator.getRoute)),
-        navBarItem(
-            icon: IconAssets.message,
-            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-                onGenerateRoute: AppGenerator.getRoute)),
-        navBarItem(
-            icon: IconAssets.proFile,
-            routeAndNavigatorSettings: const RouteAndNavigatorSettings(
-                onGenerateRoute: AppGenerator.getRoute)),
-      ],
+      items: _buildNavBarItems(provider),
       context,
       navBarStyle: NavBarStyle.style12,
       backgroundColor: AppColors.scaffoldBackgroundColor,
