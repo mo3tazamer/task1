@@ -17,6 +17,7 @@ class AppSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppTextField(
+
       controller: controller,
       focusNode: focusNode,
       borderSize: 10.r,

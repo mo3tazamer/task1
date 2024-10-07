@@ -15,6 +15,8 @@ class _TaskState extends State<Task> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      enableScaleText: () => true,
+      enableScaleWH:  () => true,
       minTextAdapt: true,
       designSize: const Size(360, 690),
       builder: (context, child) => MaterialApp(
@@ -28,6 +30,8 @@ class _TaskState extends State<Task> {
               maxScaleFactor: 1.3,
             );
             return MediaQuery(
+
+
               data: MediaQuery.of(context).copyWith(textScaler: scale),
               child: child!,
             );

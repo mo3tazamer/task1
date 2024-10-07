@@ -61,25 +61,24 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 6.w),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              //mainAxisSize: MainAxisSize.min,
               children: [
                 AppSearchBar(
+
                   focusNode: _focusNode,
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 CarouselWithDotsIndicator(
                   images: images
-                      .map((item) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: Image.asset(
-                                  item,
-                                  fit: BoxFit.fitHeight,
-                                ).image,
-                              ),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10.r),
+                      .map((item) => Flexible(
+                        child: Image.asset(
+                              item,
+                              fit: BoxFit.contain,
+
                             ),
-                          ))
+                      ))
                       .toList(),
                 ),
                 const SizedBox(
